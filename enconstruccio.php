@@ -12,7 +12,7 @@
 
 <body>
     <?php include('navbar.php'); ?>
-    <h1>Pàgina inici :)</h1>
+    <h1>Pàgina en construcció</h1>
 </body>
 
 </html>
