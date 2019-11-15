@@ -8,15 +8,16 @@ function translate($tag, $lang)
     try {
 
         require('bbdd.php');
-        $stmt = $dbh->prepare("SELECT translated FROM ra_translations WHERE tag = :tag AND lang = :lang");
+        $stmt = $dbh->prepare("SELECT value FROM ra_translations WHERE tag = :tag AND lang = :lang");
         $stmt->bindParam(':tag', $tag);
         $stmt->bindParam(':lang', $lang);
         $stmt->execute();
-        while ($row = $stmt->fetchColumn(1)) {
+        while ($row = $stmt->fetchColumn(0)) {
             return $row;
         }
     } catch (Exception $e) {
 
-        return $result;
+        
     }
+    return $result;
 }

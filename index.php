@@ -1,4 +1,4 @@
-<?php require('auth.php'); ?>
+<?php require('auth.php'); require('utils.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +12,7 @@
 
 <body>
     <?php include('navbar.php'); ?>
-    <h1>Pàgina inici :)</h1>
+    <h1><?php echo(translate('web.index.h1','ca-ES'));?></h1>
 </body>
 
 </html>
