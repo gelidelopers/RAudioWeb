@@ -1,4 +1,6 @@
-<?php require('auth.php'); require('utils.php') ?>
+<?php require('auth.php');
+require('utils.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +14,10 @@
 
 <body>
     <?php include('navbar.php'); ?>
-    <h1><?php echo(translate('web.index.h1','ca-ES'));?></h1>
+    <div class="uk-containter">
+        <h1><?php echo (translate('web.index.h1', 'ca-ES')); ?></h1>
+        <?php showDataTable('select id, name, email from ra_contact','select count(*) from ra_contact',array(),array('id','name','email'))?>
+    </div>
 </body>
 
 </html>
