@@ -69,9 +69,22 @@ function showDataTable($query, $countQuery, $queryParameters, $columns)
             foreach ($row as $ceil) {
                 echo '<td>' . $ceil . '</td>';
             }
-            echo '</tr>';
+
+            ?>
+            <td>
+                <div class="uk-margin-small">
+                    <div class="uk-button-group">
+                        <a class="uk-button uk-button-secondary uk-button-small" >View</a>
+                        <a class="uk-button uk-button-primary uk-button-small">Edit</a>
+                        <a class="uk-button uk-button-danger uk-button-small" href="delete.php">Delete</a>
+                    </div>
+                </div>
+            </td>
+            </tr>
+<?php
         }
         echo '</tbody>';
         echo '</table>';
     } catch (Exception $e) { }
 }
+?>
