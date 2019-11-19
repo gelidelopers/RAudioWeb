@@ -16,7 +16,7 @@ require('utils.php');
     <?php include('navbar.php'); ?>
     <div class="uk-containter">
         <h1><?php echo (translate('web.index.h1', 'ca-ES')); ?></h1>
-        <?php showDataTable('select id, name, email from ra_contact','select count(*) from ra_contact',array(),array('id','name','email'))?>
+        <?php showDataTable('select id, name, email from ra_contact','select count(*) from ra_contact',array(),array('id','name','email'),'ra_contact')?>
     </div>
 </body>
 

@@ -1,9 +1,13 @@
 <?php
 
 
-function translate($tag, $lang)
+function translate($tag)
 {
     $result = $tag;
+
+    if(isset($_SESSION['lang'])){
+        
+    }
 
     try {
 
@@ -24,7 +28,7 @@ function encryptPasswd($plainPasswd)
     return password_hash($plainPasswd, PASSWORD_DEFAULT);;
 }
 
-function showDataTable($query, $countQuery, $queryParameters, $columns)
+function showDataTable($query, $countQuery, $queryParameters, $columns, $table)
 {
 
     try {
@@ -76,7 +80,9 @@ function showDataTable($query, $countQuery, $queryParameters, $columns)
                     <div class="uk-button-group">
                         <a class="uk-button uk-button-secondary uk-button-small" >View</a>
                         <a class="uk-button uk-button-primary uk-button-small">Edit</a>
-                        <a class="uk-button uk-button-danger uk-button-small" href="delete.php">Delete</a>
+                        <a class="uk-button uk-button-danger uk-button-small" href="delete.php?<?php echo http_build_query(array('table'=>$table,
+              'id'=>$row['id'],
+              'name'=>$row['id']))?>">Delete</a>
                     </div>
                 </div>
             </td>

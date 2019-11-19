@@ -18,7 +18,7 @@ function canLogIn($user, $passwd)
    try {
 
       require('bbdd.php');
-      $stmt = $dbh->prepare("SELECT password,id FROM ra_user WHERE name = :user ");
+      $stmt = $dbh->prepare("SELECT password,id,lang FROM ra_user WHERE name = :user ");
       $stmt->bindParam(':user', $user);
       $stmt->execute();
       $row = $stmt->fetchColumn(0);
@@ -26,8 +26,12 @@ function canLogIn($user, $passwd)
          $result = password_verify($passwd, $row);
          if ($result) {
             $row = $stmt->fetchColumn(1);
-            if (isset($row) && !empty($row)) {
+            if (isset($row) && is_numeric($row)) {
                $_SESSION['idusuari'] = $row;
+            }
+            $row = $stmt->fetchColumn(2);
+            if (isset($row) && !empty($row)) {
+               $_SESSION['lang'] = $row;
             }
          }
       }
