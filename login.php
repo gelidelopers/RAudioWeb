@@ -1,5 +1,6 @@
 <?php
 session_start();
+require('utils.php');
 if (isset($_SESSION["usuari"])) {
   session_destroy();
   session_unset();
@@ -27,7 +28,7 @@ function canLogIn($user, $passwd)
          if ($result) {
             $row = $stmt->fetchColumn(1);
             if (isset($row) && is_numeric($row)) {
-               $_SESSION['idusuari'] = $row;
+               $_SESSION['iduser'] = $row;
             }
             $row = $stmt->fetchColumn(2);
             if (isset($row) && !empty($row)) {
@@ -65,12 +66,11 @@ function canLogIn($user, $passwd)
             <input name="passwd" class="uk-input uk-form-width-medium" type="password" placeholder="Contrasenya">
           </div>
           <div class="uk-margin">
-            <input class="uk-button uk-button-primary" type="submit" value="entrar">
+            <input class="uk-button uk-button-primary" type="submit" value="<?php echo translate('web.login.enter',array())?>">
           </div>
         </form>
       </div>
     </div>
   </div>
 </body>
-
 </html>

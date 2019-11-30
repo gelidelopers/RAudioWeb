@@ -15,8 +15,15 @@ require('utils.php');
 <body>
     <?php include('navbar.php'); ?>
     <div class="uk-containter">
-        <h1><?php echo (translate('web.index.h1', 'ca-ES')); ?></h1>
-        <?php showDataTable('select id, name, email from ra_contact','select count(*) from ra_contact',array(),array('id','name','email'),'ra_contact')?>
+
+
+        <div>
+            <div class="uk-card uk-card-default uk-card-body">
+                <h1><?php echo (translate('web.index.h1', array())); ?></h1>
+                <?php showDataTable('select id, name, email from ra_contact', 'select count(*) from ra_contact', array(), array('id', 'name', 'email'), 'ra_contact','index.php') ?>
+            </div>
+        </div>
+
     </div>
 </body>
 

@@ -18,27 +18,31 @@ require('bbdd.php'); ?>
 
     if (isset($_GET['table']) && isset($_GET['id'])) {
 
-        if (isset($_POST['sure']) && $_POST['sure'] == 'yes') {
-            $err = delete($_GET['id'], $_GET['table']);
-            if (!empty($err)) {
-                echo '<div class="uk-alert-danger" uk-alert>
+        if (isset($_POST['sure'])) {
+            if ($_POST['sure'] == 'yes') {
+                $err = delete($_GET['id'], $_GET['table']);
+                if (!empty($err)) {
+                    echo '<div class="uk-alert-danger" uk-alert>
                 <a class="uk-alert-close" uk-close></a>
                 <p> Error :( ' . $err . '</p>
             </div>
             ';
-            } else {
-                echo '<div class="uk-alert" uk-alert>
+                } else {
+                    echo '<div class="uk-alert" uk-alert>
                 <a class="uk-alert-close" uk-close></a>
-                <p>bORRAT</p>
+                <p>Registre ' . $_GET['id'] . ' borrat correctament</p>
             </div>
+            <a class="uk-button" href="' . $_GET['return'] . '">Tornar</a>
             ';
+                }
             }
         } else {
 
             ?>
             <h1>Segur que vols borrar el registre <?php if (isset($_GET['name'])) echo $_GET['name']; ?> ?</h1>
-            <a class="uk-button uk-button-primary uk-margin" href="index.php"><?php echo translate('web.datatables.delete.notsure', 'ca-ES') ?></a>
-            <form method="post"><input type="invisible" name="sure" value="yes"><input class="uk-button uk-button-danger uk-margin" href="" type="submit">si home si</input></form>
+            
+            <form method="post" action="<?php echo $_GET['return']; ?>"><input type="hidden" name="sure" value="no"><input class="uk-button uk-button-primary uk-margin" href="" type="submit" value="no"></input></form>
+            <form method="post"><input type="hidden" name="sure" value="yes"><input class="uk-button uk-button-danger uk-margin" href="" type="submit" value="si"></input></form>
     <?php
         }
     } else {
